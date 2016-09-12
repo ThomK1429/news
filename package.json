@@ -1,7 +1,7 @@
 {
   "name": "mongoose_skeleton",
   "version": "1.0.0",
-  "description": "",
+  "description": "Wk 18 - All the news that is fit to scrape",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,8 +13,18 @@
     "body-parser": "^1.15.0",
     "cheerio": "^0.20.0",
     "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
     "mongoose": "^4.4.6",
     "morgan": "^1.7.0",
     "request": "^2.69.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomK1429/news.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThomK1429/news/issues"
+  },
+  "homepage": "https://github.com/ThomK1429/news#readme"
 }
