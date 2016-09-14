@@ -168,6 +168,20 @@ app.post('/articles/:id', function(req, res){
 
 
 // listen on port 3000
-app.listen(3000, function() {
-  console.log('App running on port 3000!');
+//app.listen(3000, function() {
+//  console.log('App running on port 3000!');
+//});
+
+var PORT = process.env.PORT || 3000; // Sets an initial port.
+
+connection.connect(function(err) {
+  if (err) {
+    console.error('error connecting port: ' + err.stack);
+    return;
+  };
+
+  console.log('MySQL connected as id ' + connection.threadId);
+  app.listen(PORT, function() {
+	console.log("News server App listening on PORT: " + PORT);
 });
+})
