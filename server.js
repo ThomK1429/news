@@ -24,8 +24,14 @@ app.use(express.static('public'));
 
 
 // Database configuration with mongoose
-process.env.MONGODB_URL || mongoose.connect('mongodb://localhost/27017/tklocalmongodb');
-//mongoose.connect('mongodb://localhost/week18day3mongoose');
+var connection;
+
+if (process.env.MONGODB_URL){
+  connection = mongoose.connect('mongodb://heroku_m8pbch17:kqt9v6etnefskee6dfee9n30pe@ds029446.mlab.com:29446/heroku_m8pbch17');
+} else {
+  connection = mongoose.connect('mongodb://localhost/27017/tklocalmongodb');
+}
+
 var db = mongoose.connection;
 
 // show any mongoose errors
