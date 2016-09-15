@@ -26,11 +26,12 @@ app.use(express.static('public'));
 // Database configuration with mongoose
 var connection;
 
-if (process.env.MONGODB_URL){
-  connection = mongoose.connect('mongodb://heroku_m8pbch17:kqt9v6etnefskee6dfee9n30pe@ds029446.mlab.com:29446/heroku_m8pbch17');
-} else {
-  connection = mongoose.connect('mongodb://localhost/27017/tklocalmongodb');
-}
+connection = mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/27017/tklocalmongodb'); 
+//if (process.env.MONGODB_URL){
+//  connection = mongoose.connect('mongodb://heroku_m8pbch17:kqt9v6etnefskee6dfee9n30pe@ds029446.mlab.com:29446/heroku_m8pbch17');
+//} else {
+//  connection = mongoose.connect('mongodb://localhost/27017/tklocalmongodb');
+//}
 
 var db = mongoose.connection;
 
@@ -173,7 +174,23 @@ app.post('/articles/:id', function(req, res){
 
 
 
-// listen on port 3000
-app.listen(3000, function() {
-  console.log('App running on port 3000!');
+// listen on LOCAL port 3000
+//app.listen(3000, function() {
+//  console.log('App running on port 3000!');
+//});
+
+//--------------------------------------------------------
+var PORT = process.env.PORT || 3000; // Sets an initial port.
+
+connection.connect(function(err) {
+  if (err) {
+    console.error('Port error connecting: ' + err.stack);
+    return;
+  };
+
+  console.log('Port connected as id ' + connection.threadId);
+  app.listen(PORT, function() {
+	console.log("Server App listening on PORT: " + PORT);
 });
+})
+
