@@ -24,7 +24,7 @@ app.use(express.static('public'));
 
 
 // Database configuration with mongoose
-process.env.MONGODB_URL || mongoose.connect('mongodb://localhost/tklocalmongodb');
+process.env.MONGODB_URL || mongoose.connect('mongodb://localhost/27017/tklocalmongodb');
 //mongoose.connect('mongodb://localhost/week18day3mongoose');
 var db = mongoose.connection;
 
