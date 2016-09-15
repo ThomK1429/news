@@ -182,15 +182,9 @@ app.post('/articles/:id', function(req, res){
 //--------------------------------------------------------
 var PORT = process.env.PORT || 3000; // Sets an initial port.
 
-connection.connect(function(err) {
-  if (err) {
-    console.error('Port error connecting: ' + err.stack);
-    return;
-  };
-
   console.log('Port connected as id ' + connection.threadId);
   app.listen(PORT, function() {
 	console.log("Server App listening on PORT: " + PORT);
 });
-})
+
 
