@@ -21,11 +21,19 @@ app.use(bodyParser.urlencoded({
 
 // make public a static dir
 app.use(express.static('public'));
-
+ 
 
 // Database configuration with mongoose
-process.env.MONGODB_URL || mongoose.connect('mongodb://localhost/tklocalmongodb');
-//mongoose.connect('mongodb://localhost/week18day3mongoose');
+
+
+
+//process.env.MONGODB_URL || mongoose.connect('mongodb://localhost/week18day3mongoose');
+
+
+
+
+mongoose.connect('mongodb://localhost/week18day3mongoose');
+//mongoose.connect('mongodb://heroku_m8pbch17:kqt9v6etnefskee6dfee9n30pe@ds029446.mlab.com:29446/heroku_m8pbch17');
 var db = mongoose.connection;
 
 // show any mongoose errors
@@ -163,11 +171,15 @@ app.post('/articles/:id', function(req, res){
 
 
 
-
-
-
-
 // listen on port 3000
-app.listen(3000, function() {
-  console.log('App running on port 3000!');
+//app.listen(3000, function() {
+//  console.log('App running on port 3000!');
+//});
+
+var PORT = process.env.PORT || 3000; // Sets an initial port.
+
+
+  app.listen(PORT, function() {
+	console.log("News server App listening on PORT: " + PORT);
 });
+
