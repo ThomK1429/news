@@ -63,6 +63,7 @@ app.get('/', function(req, res) {
 app.get('/scrape', function(req, res) {
 	// first, we grab the body of the html with request
   request('http://www.echojs.com/', function(error, response, html) {
+  	console.log("html", html);
   	// then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     // now, we grab every h2 within an article tag, and do the following:
