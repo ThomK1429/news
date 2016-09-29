@@ -26,11 +26,11 @@ app.use(express.static('public'));
 // Database configuration with mongoose
 var connection;
 
-connection = mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/27017/tklocalmongodb'); 
+connection = mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/27017:tklocalmongodb'); 
 //if (process.env.MONGODB_URL){
 //  connection = mongoose.connect('mongodb://heroku_m8pbch17:kqt9v6etnefskee6dfee9n30pe@ds029446.mlab.com:29446/heroku_m8pbch17');
 //} else {
-//  connection = mongoose.connect('mongodb://localhost/27017/tklocalmongodb');
+//  connection = mongoose.connect('mongodb://localhost/27017:tklocalmongodb');
 //}
 
 var db = mongoose.connection;
@@ -61,8 +61,9 @@ app.get('/', function(req, res) {
 
 // A GET request to scrape the echojs website.
 app.get('/scrape', function(req, res) {
-	// first, we grab the body of the html with request
-  request('http://www.echojs.com/', function(error, response, html) {
+	// first, we grab the body of the html with request  
+  //request('http://www.echojs.com/', function(error, response, html) {
+  request('http://www.foxnews.com/tech.html/', function(error, response, html) {
   	console.log("html", html);
   	// then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
